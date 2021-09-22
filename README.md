@@ -34,3 +34,4 @@ Description of fair
 - The number of prices must be atleast equal to the number of winners or more
 - In the case the number of prices is equal to the number of winners, The prices are distributed randomly
 - The differences of the total sum of prices given to each user should be as small as possible
+- The total sum of prices for each winner should be as close to the average win as possible
