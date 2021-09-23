@@ -38,8 +38,8 @@ public class Challenge {
         BigDecimal sum = prices.stream().reduce(BigDecimal.ZERO, BigDecimal::add); // get the sum of all prices
         BigDecimal avg = sum.divide(BigDecimal.valueOf((double) w.size()), RoundingMode.DOWN); // get the average amount each winner should get
 
-        prices = prices.stream().filter(s -> s.compareTo(avg) <= 0).collect(Collectors.toList()); // Get all the prices below or equals to the average amount each winner should get
-        System.out.printf("Available prices - %s%n", prices);
+//        prices = prices.stream().filter(s -> s.compareTo(avg) <= 0).collect(Collectors.toList()); // Get all the prices below or equals to the average amount each winner should get
+//        System.out.printf("Available prices - %s%n", prices);
 
         if (w.size() == prices.size()) {
             // If available prices are equal to the remaining prices distribute them randomly
@@ -58,13 +58,13 @@ public class Challenge {
                         Winner winner = chosen.get(a);
                         List<BigDecimal> myPrices = new ArrayList<>(List.copyOf(winner.getPrices()));
                         BigDecimal myTotal = myPrices.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
-                        if (myTotal.add(price).compareTo(avg) <= 0) {
+//                        if (myTotal.add(price).compareTo(avg) <= 0) {
                             // Issue out the price
                             myPrices.add(price);
                             winner.setPrices(myPrices);
                             chosen.set(chosen.indexOf(winner), winner);
                             given.add(i);
-                        }
+//                        }
                     }
                 }
             }
