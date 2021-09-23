@@ -52,7 +52,7 @@ public class Challenge {
             List<Integer> given = new ArrayList<>(); // create an array to store the already given out prices
             for(int i = 0; i < prices.size(); i++){
                 BigDecimal price = prices.get(i);
-                chosen = chosen.stream().sorted(Comparator.comparingInt(a -> a.getPrices().size())).collect(Collectors.toList()); // sort the list with the number of prices each winner has to prioritizes winners with less
+                chosen = chosen.stream().sorted(Comparator.comparingDouble(a -> a.getPrices().stream().reduce(BigDecimal.ZERO, BigDecimal::add).doubleValue())).collect(Collectors.toList()); // sort the list with the number of prices each winner has to prioritizes winners with less
                 for (int a = 0; a < chosen.size(); a++) {
                     if (!given.contains(i)){
                         Winner winner = chosen.get(a);
